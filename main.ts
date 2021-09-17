@@ -1,21 +1,25 @@
 input.onButtonPressed(Button.A, function () {
-    분 += 1
-    basic.showNumber(분)
+    초 += 1
+    basic.showNumber(초)
 })
 input.onButtonPressed(Button.AB, function () {
     basic.showIcon(IconNames.Yes)
     music.stopAllSounds()
     pins.digitalWritePin(DigitalPin.P0, 0)
+    초 = 0
 })
 input.onButtonPressed(Button.B, function () {
-    for (let index = 0; index < 분; index++) {
-        basic.pause(60000)
-        분 = 분 - 1
-        basic.showNumber(분)
+    countdown = 초
+    for (let index = 0; index < 초; index++) {
+        basic.showNumber(countdown)
+        basic.pause(1000)
+        countdown = countdown - 1
     }
     basic.showIcon(IconNames.EigthNote)
     music.startMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.Forever)
     pins.digitalWritePin(DigitalPin.P0, 1)
 })
-let 분 = 0
-분 = 0
+let countdown = 0
+let 초 = 0
+초 = 0
+countdown = 0
